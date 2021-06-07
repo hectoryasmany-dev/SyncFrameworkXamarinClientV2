@@ -84,7 +84,7 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
             LogInCommand = new Command(() => ExecuteLogInCommand(), () => Login?.Length > 0);
             SyncCommand = new Command(() => ExecuteSyncCommand(), () => !this.isBusy);
 
-            XpoHelper.InitXpoSync(cnx, "https://90d62ae80d57.ngrok.io");
+            XpoHelper.InitXpoSync(cnx, "https://aff109f045bf.ngrok.io");
         }
 
         string cnx = SyncDataStoreAsynchronous.GetConnectionString(XpoHelper.GetConnectionString("Data"), XpoHelper.GetConnectionString("Delta"), "Mobile", "", true);

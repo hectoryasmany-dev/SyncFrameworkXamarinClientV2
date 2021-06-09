@@ -3,6 +3,7 @@ using DevExpress.ExpressApp.Security;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using SyncFrameworkXamarinClientV2.Core;
+using SyncFrameworkXamarinClientV2.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,9 +46,9 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
                 XpoHelper.InitXpo(cnx, Login, Password);
                 IsBusy = false;
                 if (Device.RuntimePlatform == Device.iOS)
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new ItemsPage();
                 else
-                    Application.Current.MainPage = new NavigationPage(new MainPage());
+                    Application.Current.MainPage = new NavigationPage(new ItemsPage());
             }
             catch (Exception ex)
             {
@@ -84,7 +85,7 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
             LogInCommand = new Command(() => ExecuteLogInCommand(), () => Login?.Length > 0);
             SyncCommand = new Command(() => ExecuteSyncCommand(), () => !this.isBusy);
 
-            XpoHelper.InitXpoSync(cnx, "https://aff109f045bf.ngrok.io");
+            XpoHelper.InitXpoSync(cnx, "https://b5789a9e2a2c.ngrok.io");
         }
 
         string cnx = SyncDataStoreAsynchronous.GetConnectionString(XpoHelper.GetConnectionString("Data"), XpoHelper.GetConnectionString("Delta"), "Mobile", "", true);

@@ -33,7 +33,7 @@ namespace SyncFrameworkXamarinClientV2.Core
         private static string syncUrl;
         
         public static  Client client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => new HttpClient());
-        public static ApiFunction Function = new ApiFunction(client, "https://90d62ae80d57.ngrok.io" + "/Sync", null);
+        public static ApiFunction Function = new ApiFunction(client, "https://b5789a9e2a2c.ngrok.io" + "/Sync", null);
 
         private const string ConnectionTemplate = @"XpoProvider=SQLite;Data Source=$DatabaseName.db";
         static CompressXmlObjectSerializationService serializationService;

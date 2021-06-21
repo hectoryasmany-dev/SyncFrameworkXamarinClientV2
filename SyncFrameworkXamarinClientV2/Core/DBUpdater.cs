@@ -23,7 +23,7 @@ namespace SyncFrameworkXamarinClientV2.Core
         {
             CreateUser();
             CreateAdmin();
-            CreateEmployees();
+           // CreateEmployees();
         }
         private void CreateUser()
         {

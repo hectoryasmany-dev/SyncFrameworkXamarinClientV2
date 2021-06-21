@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using BIT.Xpo.Providers.OfflineDataSync.NetworkExtensions;
 using System.Diagnostics;
 using SyncFrameworkXamarinClientV2.Core;
+using SyncFrameworkXamarinClientV2.Views;
 
 namespace SyncFrameworkXamarinClientV2.ViewModels
 {
@@ -58,7 +59,7 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
                 return;
             var tempGuid = SelectedItem.Oid;
             SelectedItem = null;
-          //  Navigation.PushAsync(new ItemDetailPage(tempGuid));
+           Navigation.PushAsync(new ItemDetailPage(tempGuid));
         }
         public Department SelectedDepartment
         {
@@ -108,6 +109,9 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
             try
             {
                 XpoHelper.SyncDataStore.PullDeltas(XpoHelper.SyncDataStoreServerConfiguration);
+                //ExecuteLoadEmployeesCommand();
+                //ExecuteLoadDepartmentsCommand();
+
             }
             catch (Exception ex)
             {
@@ -123,9 +127,22 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
             if (IsBusy)
                 return;
 
-            IsBusy = true;
-            XpoHelper.SyncDataStore.PushDeltas(XpoHelper.SyncDataStoreServerConfiguration);
-            IsBusy = false;
+            //IsBusy = true;
+            try
+            {
+                var deltas = XpoHelper.SyncDataStore.GetSerializableDeltas();
+                //var deltas = XpoHelper.SyncDataStore.PushDeltas(XpoHelper.SyncDataStoreServerConfiguration);
+                XpoHelper.SyncDataStore.PushDeltas(XpoHelper.SyncDataStoreServerConfiguration);
+               
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+                IsBusy = false;
+                throw;
+            }
+            
         }
         async Task ExecuteAddItemCommand()
         {

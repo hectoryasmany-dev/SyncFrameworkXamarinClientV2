@@ -63,15 +63,16 @@ namespace SyncFrameworkXamarinClientV2.Core
         public static void Sync()
         {
 
-            serializationService = new BIT.Data.Services.CompressXmlObjectSerializationService();
+            //serializationService = new BIT.Data.Services.CompressXmlObjectSerializationService();
 
-            var deltas=SyncDataStore.PullDeltas(XpoHelper.SyncDataStoreServerConfiguration);
+            //var deltas=SyncDataStore.PullDeltas(XpoHelper.SyncDataStoreServerConfiguration);
             
-            List<Delta> DeltasA = SyncDataStore.GetSerializableDeltas();
-            var LastProccesedDeltaKeyB = SyncDataStore.GetLastProcessedDeltaKey();
+            //List<Delta> DeltasA = SyncDataStore.GetSerializableDeltas();
+            //var LastProccesedDeltaKeyB = SyncDataStore.GetLastProcessedDeltaKey();
 
-            var Client_A_DataStoreMissingDeltas = GetDeltasFromServer(serializationService, LastProccesedDeltaKeyB, "Mobile");
-
+            //var Client_A_DataStoreMissingDeltas = GetDeltasFromServer(serializationService, LastProccesedDeltaKeyB, "Mobile");
+            
+            SyncDataStore.PullDeltas(XpoHelper.SyncDataStoreServerConfiguration);
             SyncDataStore.PushDeltas(XpoHelper.SyncDataStoreServerConfiguration);
 
 
@@ -150,6 +151,7 @@ namespace SyncFrameworkXamarinClientV2.Core
         {
             XpoTypesInfoHelper.GetXpoTypeInfoSource();
             XafTypesInfo.Instance.RegisterEntity(typeof(Employee));
+            XafTypesInfo.Instance.RegisterEntity(typeof(Department));
             XafTypesInfo.Instance.RegisterEntity(typeof(PermissionPolicyUser));
             XafTypesInfo.Instance.RegisterEntity(typeof(PermissionPolicyRole));
         }

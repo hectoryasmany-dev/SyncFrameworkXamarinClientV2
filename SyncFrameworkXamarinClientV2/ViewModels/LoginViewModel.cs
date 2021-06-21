@@ -88,7 +88,7 @@ namespace SyncFrameworkXamarinClientV2.ViewModels
             XpoHelper.InitXpoSync(cnx, "https://b5789a9e2a2c.ngrok.io");
         }
 
-        string cnx = SyncDataStoreAsynchronous.GetConnectionString(XpoHelper.GetConnectionString("Data"), XpoHelper.GetConnectionString("Delta"), "Mobile", "", true);
+        string cnx = SyncDataStoreAsynchronous.GetConnectionString(XpoHelper.GetConnectionString("Data"), XpoHelper.GetConnectionString("Delta"), "Mobile", "", false);
         bool isBusy = false;
         public bool IsBusy
         {

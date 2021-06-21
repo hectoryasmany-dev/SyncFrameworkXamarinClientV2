@@ -29,11 +29,11 @@
                                 <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding FullName}" 
                            LineBreakMode="NoWrap" 
-                           Style="{DynamicResource ListItemTextStyle}" 
+                          
                            FontSize="16" />
                                     <Label Text="{Binding Department}" 
                            LineBreakMode="NoWrap"
-                           Style="{DynamicResource ListItemDetailTextStyle}"
+                          
                            FontSize="13" />
                                 </StackLayout>
                             </StackLayout>
